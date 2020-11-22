@@ -52,9 +52,9 @@ class SExpression:
 
     def parser(self):
         while '(' in self.inp_sexp:
-            # find the last '(' and first ')' --> the innermost expression
-            left_bound = self.inp_sexp.rfind('(')
+            # find the first ')' and '(' according to that --> the innermost and left most expression
             right_bound = self.inp_sexp.find(')')
+            left_bound = self.inp_sexp[:right_bound].rfind('(')
 
             # split the innermost expresion base on the single space, " ", between function arguments
             sub_expression = self.inp_sexp[left_bound + 1:right_bound].split(" ")
